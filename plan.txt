@@ -1,0 +1,7 @@
+TO DO (another week)
+- host on vercel: or dockerize + aws
+
+DUE: 17th
+
+
+docker-compose up --build

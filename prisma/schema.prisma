@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id String @id @default(uuid())
+  name String 
+  description String? @default("No description has been provided for this course.")
+
+  notes Note[]
+  members User[]
+  messages Message[] @relation("course")
+}
+
+model User {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  userName String @unique
+  password String
+
+  createdNotes Note[] @relation("userNotes")
+
+  joinedCourses Course[]
+
+  comments Comment[] @relation("userComments")
+
+  messages Message[] @relation("creator")
+}
+
+model Note {
+  id String @id @default(uuid()) 
+  title String
+  caption String? @default("No caption has been provided for this note")
+  body String
+
+  comments Comment[] @relation("comments")
+
+  courses Course[]
+
+  userid String
+  createdBy User @relation("userNotes", fields: [userid], references: [id])
+}
+
+
+model Comment {
+  id String @id @default(uuid())
+  text String 
+
+  noteid String
+  Note Note @relation("comments", fields: [noteid], references: [id])
+
+  userid String
+  User User @relation("userComments", fields: [userid], references: [id])
+}
+
+model Message {
+  id String @id @default(uuid())
+  text String
+
+  userid String
+  creator User @relation("creator", fields: [userid], references: [id])
+  
+  courseid String
+  course Course @relation("course", fields: [courseid], references: [id])
+}
+
+
