@@ -27,7 +27,7 @@ export default function Chat({data, course}) {
 
   const dummy = useRef<HTMLSpanElement>(null);
 
-  const socket = io("http://localhost:5000")
+  const socket = io("https://takenotebackend.onrender.com")
 
   useEffect(() => { 
     socket.on("message", (message) => {
