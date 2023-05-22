@@ -10,9 +10,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci
 
-COPY prisma ./
+COPY prisma ./  
 
-ENV DATABASE_URL "postgresql://postgres:postgres123@ec2-3-145-63-125.us-east-2.compute.amazonaws.com:5432/TakeNoteDB"
+ENV DATABASE_URL "postgresql://postgres:postgres123@ec2-18-218-39-220.us-east-2.compute.amazonaws.com:5432/TakeNoteDB"
 
 ENV SECRET "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4NDU1MTI0NCwiaWF0IjoxNjg0NTUxMjQ0fQ.b-aEVDpSIFdrBTLU1XuBIzh3qsxjh4mUqYjmoyf-Dw4="
 
