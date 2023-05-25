@@ -59,7 +59,7 @@ export default function page() {
     const response = await fetch("https://api.oneai.com/api/v0/pipeline", {
       method: "POST",
       headers: {
-        "api-key": "bb7fe589-e182-4815-96ed-c9b984c8d377",
+        "api-key": process.env.API_KEY!,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
