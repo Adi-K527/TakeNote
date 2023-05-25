@@ -12,11 +12,11 @@ RUN npm ci
 
 COPY prisma ./  
 
-ENV DATABASE_URL process.env.DATABASE_URL
+ENV DATABASE_URL ${DATABASE_URL}
 
-ENV SECRET process.env.SECRET
+ENV SECRET ${SECRET}
 
-ENV API_KEY process.env.API_KEY
+ENV API_KEY ${API_KEY}
 
 RUN npx prisma generate
 
